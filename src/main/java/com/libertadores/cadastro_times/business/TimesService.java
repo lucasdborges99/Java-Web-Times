@@ -19,9 +19,30 @@ public class TimesService {
     }
 
     public Times buscarTimesPorNome(String nome) {
-
         return repository.findByNome(nome).orElseThrow(
                 () -> new RuntimeException("Time não encontrado")
         );
     }
+
+
+    public void deletarTimePorNome(String nome){
+        repository.deleteByNome(nome);
+    }
+
+
+    public void atualizarTimePorId(Integer id, Times time){
+        Times timeEntity = repository.findById(id).orElseThrow(() ->
+                new RuntimeException("Time não encontrado"));
+
+        Times timeAtualizado = Times.builder()
+                .nome(time.getNome() != null ? time.getNome() : timeEntity.getNome())
+                .pais(time.getPais() != null ? time.getPais() : timeEntity.getPais())
+                .titulos(time.getTitulos() != null ? time.getTitulos() : timeEntity.getTitulos())
+                .estadio(time.getEstadio() != null ? time.getEstadio() : timeEntity.getEstadio())
+                .id(timeEntity.getId())
+                .build();
+
+        repository.saveAndFlush(timeAtualizado);
+    }
+
 }
