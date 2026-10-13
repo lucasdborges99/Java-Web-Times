@@ -14,8 +14,8 @@ public class TimesService {
         this.repository = repository;
     }
 
-    public void salvarTimes(Times time){
-        repository.saveAndFlush(time);
+    public void salvarTimes(Times times){
+        repository.saveAndFlush(times);
     }
 
     public Times buscarTimesPorNome(String nome) {
@@ -25,20 +25,20 @@ public class TimesService {
     }
 
 
-    public void deletarTimePorNome(String nome){
+    public void deletarTimesPorNome(String nome){
         repository.deleteByNome(nome);
     }
 
 
-    public void atualizarTimePorId(Integer id, Times time){
+    public void atualizarTimesPorId(Integer id, Times times){
         Times timeEntity = repository.findById(id).orElseThrow(() ->
                 new RuntimeException("Time não encontrado"));
 
         Times timeAtualizado = Times.builder()
-                .nome(time.getNome() != null ? time.getNome() : timeEntity.getNome())
-                .pais(time.getPais() != null ? time.getPais() : timeEntity.getPais())
-                .titulos(time.getTitulos() != null ? time.getTitulos() : timeEntity.getTitulos())
-                .estadio(time.getEstadio() != null ? time.getEstadio() : timeEntity.getEstadio())
+                .nome(times.getNome() != null ? times.getNome() : timeEntity.getNome())
+                .pais(times.getPais() != null ? times.getPais() : timeEntity.getPais())
+                .titulos(times.getTitulos() != null ? times.getTitulos() : timeEntity.getTitulos())
+                .estadio(times.getEstadio() != null ? times.getEstadio() : timeEntity.getEstadio())
                 .id(timeEntity.getId())
                 .build();
 
