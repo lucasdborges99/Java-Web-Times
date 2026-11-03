@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/times")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
 
 public class TimesController {
     private final TimesService timesService;

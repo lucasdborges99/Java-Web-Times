@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Times - Libertadores</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <header class="cabecalho">
+        <h1 class="titulo">Gestão de Times - Libertadores</h1>
+    </header>
+
+    <div id="container-alerta"></div>
+
+    <div class="layout">
+        <div class="formulario">
+            <div class="card-destaque">
+                <div class="card-cabecalho">
+                    <h2 class="card-titulo" id="titulo-formulario">Cadastrar Novo Time</h2>
+                </div>
+                <div class="card-corpo">
+                    <form id="formulario-time">
+                        <input type="hidden" id="time-id">
+
+                        <div class="campo">
+                            <label for="nome" class="rotulo">Nome do Time</label>
+                            <input type="text" class="campo" id="nome" placeholder="Ex: Palmeiras">
+                        </div>
+
+                        <div class="campo">
+                            <label for="pais" class="rotulo">País</label>
+                            <input type="text" class="campo" id="pais" placeholder="Ex: Brasil">
+                        </div>
+
+                        <div class="campo">
+                            <label for="titulos" class="rotulo">Títulos da Libertadores</label>
+                            <input type="number" class="campo" id="titulos" required min="0" placeholder="Ex: 3">
+                        </div>
+
+                        <div class="campo">
+                            <label for="estadio" class="rotulo">Estádio</label>
+                            <input type="text" class="campo" id="estadio" placeholder="Ex: Allianz Parque">
+                        </div>
+
+                        <button type="submit" class="btn-salvar" id="btn-salvar">Salvar Time</button>
+                        <button type="button" class="btn-cancelar oculto" id="btn-cancelar">Cancelar Edição</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="busca">
+            <div class="card">
+                <div class="card-cabecalho">
+                    <h2 class="card-titulo">Buscar Time por Nome</h2>
+                </div>
+                <div class="card-corpo">
+                    <div class="busca-grupo">
+                        <input type="text" id="busca-nome" class="campo" placeholder="Digite o nome do time...">
+                        <button class="btn btn-buscar" id="btn-buscar">Buscar (GET)</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-cabecalho">
+                    <h2 class="card-titulo">Time Consultado</h2>
+                </div>
+                <div class="card-corpo">
+                    <div class="tabela-box">
+                        <table class="tabela">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>País</th>
+                                <th>Títulos</th>
+                                <th>Estádio</th>
+                                <th>Ações</th>
+                            </tr>
+                            </thead>
+                            <tbody id="tabela-corpo">
+                            <tr>
+                                <td colspan="6" class="texto-vazio">Use a busca acima para listar um time ou cadastre um novo.</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
